@@ -13,8 +13,8 @@ namespace InventarioMaster
     {
         // Variables
         string host = "raspbian-serv.ddns.net";
-        string user = "admin";
-        string password = "Jumboroll";
+        string user = "appUser";
+        string password = "inventarioMasterUser99011";
         string database = "almacen";
         string port = "3306";
 
