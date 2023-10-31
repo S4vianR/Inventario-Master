@@ -33,6 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Devart.Data, Version=5.0.3136.0, Culture=neutral, PublicKeyToken=09af7300eec23701" />
+    <Reference Include="Devart.Data.MySql, Version=9.1.151.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>packages\MySqlConnector.2.2.7\lib\net471\MySqlConnector.dll</HintPath>
     </Reference>
@@ -74,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionSQL.cs" />
+    <Compile Include="EditarTabla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarTabla.Designer.cs">
+      <DependentUpon>EditarTabla.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventarioMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +102,9 @@
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditarTabla.resx">
+      <DependentUpon>EditarTabla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventarioMaster.resx">
       <DependentUpon>InventarioMaster.cs</DependentUpon>
     </EmbeddedResource>
