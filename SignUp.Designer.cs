@@ -116,6 +116,7 @@
             this.Controls.Add(this.usuarioLabel);
             this.Controls.Add(this.customLabel1);
             this.Name = "SignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SignUp";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUp_FormClosed);
             this.ResumeLayout(false);

@@ -16,6 +16,7 @@ namespace InventarioMaster
         // Variables
         private SignUp signUpForm;
         private ConexionSQL conexion = new ConexionSQL();
+        private Usuario user;
 
         public Login()
         {
@@ -45,14 +46,21 @@ namespace InventarioMaster
                 {
                     using (MySqlDataReader reader = conexion.consultar(conexionBD, query))
                     {
+                        
                         // If the user exists, open the main form
                         if (reader.HasRows)
                         {
+
                             this.Hide();
 
-                            // Get the user label
-                            string usuarioLabel = userTextBox.Text;
-                            InventarioMaster inventarioMaster = new InventarioMaster(usuarioLabel);
+                            // Obtener el tipo de acceso del usuario y el nombre
+                            while (reader.Read())
+                            {
+                                string tipoAcceso = reader.GetString(3);
+                                string nombre = reader.GetString(1);
+                                user = new Usuario(nombre, tipoAcceso);
+                            }
+                            InventarioMaster inventarioMaster = new InventarioMaster(user);
                             inventarioMaster.Show();
                         }
                         else

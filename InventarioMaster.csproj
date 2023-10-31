@@ -76,11 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionSQL.cs" />
-    <Compile Include="EditarTabla.cs">
+    <Compile Include="Edicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditarTabla.Designer.cs">
-      <DependentUpon>EditarTabla.cs</DependentUpon>
+    <Compile Include="Edicion.Designer.cs">
+      <DependentUpon>Edicion.cs</DependentUpon>
     </Compile>
     <Compile Include="InventarioMaster.cs">
       <SubType>Form</SubType>
@@ -102,8 +102,9 @@
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditarTabla.resx">
-      <DependentUpon>EditarTabla.cs</DependentUpon>
+    <Compile Include="Usuario.cs" />
+    <EmbeddedResource Include="Edicion.resx">
+      <DependentUpon>Edicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventarioMaster.resx">
       <DependentUpon>InventarioMaster.cs</DependentUpon>

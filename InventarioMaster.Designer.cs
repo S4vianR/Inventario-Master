@@ -170,6 +170,7 @@
             this.Controls.Add(this.signOutButton);
             this.Controls.Add(this.welcomeLabel);
             this.Name = "InventarioMaster";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InventarioMaster";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InventarioMaster_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tablaDeDatos)).EndInit();

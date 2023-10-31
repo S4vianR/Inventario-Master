@@ -2,6 +2,7 @@
 using PracticaU2_Componentes;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InventarioMaster
@@ -10,12 +11,25 @@ namespace InventarioMaster
     {
         private ConexionSQL conexionProductos = new ConexionSQL();
         private MySqlConnection conexionBD;
+        private Usuario usuario;
 
-        public InventarioMaster(string usuario)
+        public InventarioMaster(Usuario user)
         {
             InitializeComponent();
-            welcomeLabel.Text = "Bienvenid@ " + usuario;
+            this.usuario = user;
+
+            welcomeLabel.Text = "Bienvenid@ " + usuario.getUsuario();
             tablaDeDatos.ReadOnly = true;
+
+            // Esconder o mostrar botones dependiendo del tipo de acceso
+            if (usuario.getTipoAcceso().Equals("Admin"))
+            {
+                editarCantidad.Enabled = true;
+            }
+            else
+            {
+                editarCantidad.Enabled = false;
+            }
         }
 
         private void InventarioMaster_FormClosing(object sender, FormClosingEventArgs e)
@@ -25,6 +39,7 @@ namespace InventarioMaster
                 conexionProductos.cerrarConexion(conexionBD);
                 conexionBD.Dispose();
             }
+            // Cerrar el programa
             Application.Exit();
         }
 
@@ -57,10 +72,6 @@ namespace InventarioMaster
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
-            // Cerrar la conexion
-            conexionProductos.cerrarConexion(conexionBD);
-            conexionBD.Dispose();
         }
 
         private void verElectronicosButton_Click(object sender, EventArgs e)
@@ -85,21 +96,14 @@ namespace InventarioMaster
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            // Cerrar la conexion
-            conexionProductos.cerrarConexion(conexionBD);
-            conexionBD.Dispose();
         }
 
         private void editarCantidad_Click(object sender, EventArgs e)
         {
-            // Cerrar la conexion de la base de datos
-            conexionProductos.cerrarConexion(conexionBD);
-            conexionBD.Dispose();
-
             // Abrir el EditarTabla form
-            this.Hide();
-            EditarTabla editar = new EditarTabla();
-            editar.Show();
+            Edicion edicionForm = new Edicion();
+            edicionForm.Show();
+            edicionForm.Focus();
         }
     }
 }
