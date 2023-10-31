@@ -11,29 +11,31 @@ using System.Windows.Forms;
 
 namespace InventarioMaster
 {
-    public partial class EditarTabla : Form
+    public partial class Edicion : Form
     {
-        // Conexion
-        private ConexionSQL conexion = new ConexionSQL();
+        // Variables de conexion
+        private ConexionSQL conexionProductos = new ConexionSQL();
         private MySqlConnection conexionBD;
-        public EditarTabla()
+
+        public Edicion()
         {
             InitializeComponent();
-            welcomeLabel.Text = "Bienvenid@ usuario";
+            tituloLabel.Text = "Edicion de productos";
 
-            //Abrir conexion
-            conexionBD = conexion.conectar();
-            conexion.abrirConexion(conexionBD);
-
-            // Llenar el DataGridView con los datos de la tabla productos
+            // Inicializar el combobox de proveedores
             try
             {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT nombreProducto,cantidad FROM productos", conexionBD))
+                conexionBD = conexionProductos.conectar();
+                conexionProductos.abrirConexion(conexionBD);
+
+                string query = "SELECT nombreProducto,cantidad FROM productos";
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexionBD))
                 {
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    productosDataGridView.DataSource = table;
-                    productosDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    productodDataGridView.DataSource = table;
+                    productodDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -42,16 +44,16 @@ namespace InventarioMaster
             }
         }
 
-        private void confirmarButton_Click_1(object sender, EventArgs e)
+        private void editarButton_Click(object sender, EventArgs e)
         {
             // Escribir los cambios de la tabla en la base de datos
             try
             {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM productos", conexionBD))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT nombreProducto,cantidad FROM productos", conexionBD))
                 {
                     MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter);
                     adapter.UpdateCommand = commandBuilder.GetUpdateCommand();
-                    adapter.Update((DataTable)productosDataGridView.DataSource);
+                    adapter.Update((DataTable)productodDataGridView.DataSource);
                     MessageBox.Show("Cambios guardados");
 
                     // Abrir el InventarioMaster form

@@ -98,8 +98,8 @@ namespace InventarioMaster
 
             // Abrir el EditarTabla form
             this.Hide();
-            EditarTabla editar = new EditarTabla();
-            editar.Show();
+            Edicion edicionForm = new Edicion();
+            edicionForm.Show();
         }
     }
 }
