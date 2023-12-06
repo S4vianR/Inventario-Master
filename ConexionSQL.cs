@@ -122,6 +122,5 @@ namespace InventarioMaster
                 return null;
             }
         }
-
     }
 }

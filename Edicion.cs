@@ -255,8 +255,8 @@ namespace InventarioMaster
                 conexionProductos.abrirConexion(conexionBD);
 
                 // Crear la consulta SQL para actualizar
-                query = "UPDATE productos SET nombreProducto='" + nombreProducto + "',descripcion='" + descripcion 
-                    + "',idCategoria=" + idCategoria + ",idProveedor=" + idProveedor + ",idAlmacen=" + idAlmacen 
+                query = "UPDATE productos SET nombreProducto='" + nombreProducto + "',descripcion='" + descripcion
+                    + "',idCategoria=" + idCategoria + ",idProveedor=" + idProveedor + ",idAlmacen=" + idAlmacen
                     + ",precio=" + precio + ",cantidad=" + cantidad + " WHERE idProducto=" + actualizarIdTextBox.Text + ";";
 
                 // Inicializar la transaccion
@@ -386,7 +386,7 @@ namespace InventarioMaster
                         agregarAlmacenComboBox.DataSource = table;
                         agregarAlmacenComboBox.DisplayMember = "nombreAlmacen";
                         agregarAlmacenComboBox.ValueMember = "idAlmacen";
-            }
+                    }
 
                     // Cargar los datos de las categorias
                     query = "SELECT * FROM categorias";
@@ -438,7 +438,7 @@ namespace InventarioMaster
                     query = "SELECT * FROM almacen";
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexionBD))
-                {
+                    {
                         DataTable table = new DataTable();
                         adapter.Fill(table);
                         actualizarAlmacenComboBox.DataSource = table;
@@ -467,7 +467,5 @@ namespace InventarioMaster
             // Cerrar la conexion
             conexionProductos.cerrarConexion(conexionBD);
         }
-
-
     }
 }
