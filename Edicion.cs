@@ -386,7 +386,7 @@ namespace InventarioMaster
                         agregarAlmacenComboBox.DataSource = table;
                         agregarAlmacenComboBox.DisplayMember = "nombreAlmacen";
                         agregarAlmacenComboBox.ValueMember = "idAlmacen";
-                    }
+            }
 
                     // Cargar los datos de las categorias
                     query = "SELECT * FROM categorias";
@@ -438,7 +438,7 @@ namespace InventarioMaster
                     query = "SELECT * FROM almacen";
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexionBD))
-                    {
+                {
                         DataTable table = new DataTable();
                         adapter.Fill(table);
                         actualizarAlmacenComboBox.DataSource = table;
